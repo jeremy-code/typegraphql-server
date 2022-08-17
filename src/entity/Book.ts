@@ -6,8 +6,6 @@ import {
 	OneToMany,
 	PrimaryGeneratedColumn,
 } from "typeorm";
-import { MyContext } from "../types/MyContext";
-import { Author } from "./Author";
 import { AuthorBook } from "./AuthorBook";
 
 @ObjectType()
@@ -23,9 +21,4 @@ export class Book extends BaseEntity {
 
 	@OneToMany(() => AuthorBook, (ab) => ab.book)
 	authorConnection: Promise<AuthorBook[]>;
-
-	@Field(() => [Author])
-	async authors(@Ctx() { authorsLoader }: MyContext): Promise<Author[]> {
-		return authorsLoader.load(this.id);
-	}
 }

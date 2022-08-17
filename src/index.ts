@@ -11,6 +11,12 @@ import { redis } from "./redis";
 
 import { createSchema } from "./utils/createSchema";
 
+declare module "express-session" {
+	interface SessionData {
+		userId: string;
+	}
+}
+
 const main = async () => {
 	const schema = await createSchema();
 

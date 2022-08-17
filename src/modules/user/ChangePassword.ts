@@ -21,7 +21,7 @@ export class ChangePasswordResolver {
 			return null;
 		}
 
-		const user = await User.findOne(userId);
+		const user = await User.findOne({ where: { id: parseInt(userId, 10) } });
 
 		if (!user) {
 			return null;
@@ -33,7 +33,7 @@ export class ChangePasswordResolver {
 
 		await user.save();
 
-		ctx.req.session!.userId = user.id;
+		ctx.req.session!.userId = user.id.toString();
 
 		return user;
 	}

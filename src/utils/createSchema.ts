@@ -6,7 +6,6 @@ import { ForgotPasswordResolver } from "../modules/user/ForgotPassword";
 import { LoginResolver } from "../modules/user/Login";
 import { LogoutResolver } from "../modules/user/Logout";
 import { MeResolver } from "../modules/user/Me";
-import { ProfilePictureResolver } from "../modules/user/ProfilePicture";
 import { RegisterResolver } from "../modules/user/Register";
 
 export const createSchema = () =>
@@ -19,7 +18,6 @@ export const createSchema = () =>
 			LogoutResolver,
 			MeResolver,
 			RegisterResolver,
-			ProfilePictureResolver,
 			AuthorBookResolver,
 		],
 		authChecker: ({ context: { req } }) => {
